@@ -1,3 +1,5 @@
+const jobApplication = require("../models/jobApplication");
+
 exports.uploadApplication = async (req, res) => {
   const { name, email, phone, position } = req.body;
   const resumePath = req.files["resume"] ? req.files["resume"][0].path : null;
@@ -6,7 +8,7 @@ exports.uploadApplication = async (req, res) => {
     : null;
 
   try {
-    const application = await JobApplication.create({
+    const application = await jobApplication.create({
       name,
       email,
       phone,
